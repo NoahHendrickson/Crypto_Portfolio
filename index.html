@@ -6,20 +6,53 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://use.typekit.net/lkt4ltr.css">
-</head>
+  <link rel="stylesheet" href="https://use.typekit.net/lkt4ltr.css"></head>
 
 <body>
   <header>
     <nav>
       <img class="logo" src="icons/Logo-05.svg">
       <ul class="nav-links">
-        <li><a href="#">Profile</a></li>
+        <li><a id="profile" href="#">Profile</a>
+          <div class="dropdown">
+            <p>hi</p>
+          </div>
+        </li>
         <li><a href="#">Contact Me</a></li>
         <li><a href="#">Buy Me Chipotle</a></li>
       </ul>
       <a class="cta" href="#"><button class="settings-button">Settings</button></a>
     </nav>
+    <div class="deco"></div>
+    <div class="price-container">
+      <ul class="asset-prices">
+        <li class="assets">
+          <p class="ticker">BTC</p>
+          <p class="price">48,204.43</p>
+        </li>
+        <li class="assets">
+          <p class="ticker">ETH</p>
+          <p class="price">3,804.25</p>
+        </li>
+        <li class="assets">
+          <p class="ticker">DOT</p>
+          <p class="price">26.57</p>
+        </li>
+        <li class="assets">
+          <p class="ticker">SOL</p>
+          <p class="price">186.25</p>
+        </li>
+      </ul>
+    </div>
   </header>
+  <script>
+    var profileButton = document.getElementById('profile')
+    var profileDrop = document.querySelector('.dropdown')
+
+    profileButton.addEventListener("click", function() {
+      profileDrop.classlist.add(" show")
+    });
+
+  </script>
 </body>
 </html>
