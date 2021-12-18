@@ -106,4 +106,14 @@ p {
   font-weight: 600;
 }
 
+.side-nav {
+  position: fixed;
+  width: 400px;
+  height: 100%;
+  background: var(--mid);
+  margin-top: 0px;
+}
 
+.my-assets {
+  margin: 0px;
+}

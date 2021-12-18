@@ -45,13 +45,23 @@
       </ul>
     </div>
   </header>
+  <div class="side-nav">
+    <ul>
+      <li class="assets my-assets">
+        <p>BTC</p>
+        <p>.038</p>
+        <p>12,0323</p>
+        <p>Coinbase</p>
+      </li>
+    </ul>
+  </div>
   <script>
     var profileButton = document.getElementById('profile')
     var profileDrop = document.querySelector('.dropdown')
 
     profileButton.addEventListener("click", function() {
-      profileDrop.classlist.add(" show")
-    });
+      document.querySelector('.dropdown').classlist.add(" show");
+    })
 
   </script>
 </body>
