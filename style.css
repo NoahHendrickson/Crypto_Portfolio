@@ -32,6 +32,11 @@ body {
   font-weight: 400;
 }
 
+.title1 {
+  margin: 25px auto;
+  text-align: center;
+}
+
 .logo, li {
   padding: 0px;
 }
@@ -98,10 +103,11 @@ p {
 }
 
 .my-assets {
-  margin: 15px 25px;
+  margin: 15px 0px;
   display: flex;
   justify-content: space-between;
   border-bottom: solid var(--mid-light) 2px;
+  width: 100%;
 }
 
 .my-assets > p {
@@ -133,7 +139,43 @@ p {
   width: 400px;
   height: 100%;
   background: var(--black);
-  margin-top: 0px;
+  margin: 0px;
   box-shadow: 5.0px 0.0px 10.6px hsl(0deg 0% 0% / 0.85);
 }
+
+.side-nav-title-bar {
+  display: flex;
+}
+
+.add-asset-button {
+  margin: 25px 0px 0px 0px;
+  width: 35px;
+  height: 35px;
+  background-image: url("icons/add-asset-button-06.svg");
+}
+
+.edit-asset-button {
+  width: 100px;
+  height: 25px;
+  background: white;
+}
+
+table {
+  width: 100%;
+}
+
+td {
+  color: white;
+  text-align: center;
+}
+
+tr {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 0px;
+  margin: 15px 5px 0px 5px;
+  border-bottom: solid var(--mid-light) 2px;
+}
+
+
 
