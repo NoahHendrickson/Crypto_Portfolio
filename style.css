@@ -157,18 +157,18 @@ p {
  justify-content: flex-end;
 }
 
-.add-button-container {
-  height: 50px;
-  width: 50px;
+.add-button{
+  width: 40px;
+  height: 40px;
 }
 
-.edit-button-container {
-  height: 50px;
-  width: 50px;
+.edit-button {
+  height: 40px;
+  width: 80px;
 }
 
 .add-button-BG, .edit-button-BG {
-  background-color: var(--light);
+  fill: var(--light);
   border-radius: 10px;
   border: solid var(--dark) 4px;
   color: var(--dark);
