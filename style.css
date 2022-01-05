@@ -66,7 +66,7 @@ a:hover {
 .settings-button {
   border-radius: 100px;
   font-size: .8em;
-  border-color: var(--black);
+  border-color: var(--light);
 }
 
 nav {
@@ -176,9 +176,10 @@ button {
 }
 
 .settings-button:hover {
-  background: var(--black);
+  color: var(--black);
+  background: var(--light);
   box-shadow:
-    0 0 2px 1px var(--black); 
+    0 0 8px 1px var(--light); 
 }
 
 table {
@@ -201,7 +202,7 @@ tr {
 
 .add-asset-menu {
   position: absolute;
-  display: flex;
+  display: none;
   flex-direction: column;
   top: 0px;
   left: 0px;
@@ -209,10 +210,6 @@ tr {
   height: 100%;
   color: white;
   background: var(--black);
-}
-
-.activate {
-  display: none
 }
 
 .add-asset-title {
