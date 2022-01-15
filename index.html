@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>CryptoPortfolio</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://use.typekit.net/lkt4ltr.css"></head>
 
@@ -13,109 +13,34 @@
     <nav>
       <img class="logo" src="icons/Logo-05.svg">
       <h1 class="title">CryptoPortfolio</h1>
-      <ul class="nav-links">
-        <li><a id="profile" href="#">Profile</a>
-          <div class="dropdown">
-            <p>hi</p>
+      <div class="nav-links">
+        <div class="dropdown">
+          <button class="dropdown-button">Profile</button>
+          <div class="dropdown-menu">
+            <label>Username</label>
+            <input placeholder="Username or Email"></input>
+            <label>Password</label>
+            <input placeholder="secret words here"></input>
           </div>
-        </li>
-        <li><a href="#">Contact Me</a></li>
-        <li><a href="#">Buy Me Chipotle</a></li>
-      </ul>
-      <a class="cta" href="#"><button class="settings-button">Settings</button></a>
+        </div>
+        <button class="dropdown-button">Contact</button>
+        <button class="dropdown-button">Buy Me Chipotle</button>
+        <button class="settings-button">Settings</button>
+      </div>
     </nav>
-    <div class="deco"></div>
-    <div class="price-container">
-      <ul class="asset-prices">
-        <li class="assets">
-          <p class="ticker">BTC</p>
-          <p class="price">48,204.43</p>
-        </li>
-        <li class="assets">
-          <p class="ticker">ETH</p>
-          <p class="price">3,804.25</p>
-        </li>
-        <li class="assets">
-          <p class="ticker">DOT</p>
-          <p class="price">26.57</p>
-        </li>
-        <li class="assets">
-          <p class="ticker">SOL</p>
-          <p class="price">186.25</p>
-        </li>
-      </ul>
+    <div class="decoration-line"></div>
+    <div class="prices-container">
+
     </div>
   </header>
-  <div class="side-nav">
-    <div class="side-nav-title-bar">
-      <h1 class="wallets">Wallets</h1>
-      <div class="buttons">
-        <button class="side-nav-button">
-          +
-        </button>
-        <button class="side-nav-button">
-          Edit
-        </button>
-      </div>
-    </div>
-    <table>
-      <tbody>
-        <tr>
-          <td>ETH</td>
-          <td>2.75</td>
-          <td>10,803</td>
-          <td>Coinbase</td>
-        </tr>
-        <tr>
-          <td>DOT</td>
-          <td>172.75</td>
-          <td>5,803</td>
-          <td>Coinbase</td>
-        </tr>
-        <tr>
-          <td>SOL</td>
-          <td>26.75</td>
-          <td>4,803</td>
-          <td>Coinbase</td>
-        </tr>
-        <tr>
-          <td>AVAX</td>
-          <td>22.75</td>
-          <td>2,803</td>
-          <td>Coinbase</td>
-        </tr>
-        <tr>
-          <td>AVAX</td>
-          <td>22.75</td>
-          <td>2,803</td>
-          <td>Coinbase</td>
-        </tr>
-        <tr>
-          <td>AVAX</td>
-          <td>22.75</td>
-          <td>2,803</td>
-          <td>Coinbase</td>
-        </tr>
-      </tbody>
-    </table>
-    <div class="add-asset-menu">
-      <h1 class="title add-asset-title">Add Asset</h1>
-      <label>Ticker</label>
-      <input placeholder="Search for your asset"></input>
-      <label>Quantity</label>
-      <input></input>
-      <label>Exchange</label>
-      <input></input>
-      <div class="button-holder">
-        <button class="button-2">Add Another</button>
-        <button class="button-2 submit-button">Submit</button>
-      </div>
-    </div>
-  </div>
-  <script>
-    const addAsset = document.querySelector(".add-asset-menu")
-    
+  <div class="main-container">
+    <div class="side-nav">
 
-  </script>
+    </div>
+    <div class="main">
+
+    </div> 
+  </div>
+  <script src="main.js"></script>
 </body>
 </html>
