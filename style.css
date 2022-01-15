@@ -11,8 +11,8 @@
   --mid-light: #07D6AF;
   --light: rgb(145, 255, 156);
   --white: rgba(244, 246, 231, 1);
-  --orange: rgba(249, 217, 122, 1);
-  --purple: rgba(180, 156, 250, 1);
+  --orange: rgba(252, 109, 52, 1);
+  --grey: rgba(132, 126, 115, 1);
 }
 
 body {
@@ -28,22 +28,20 @@ body {
 nav {
   position: relative;
   display: flex;
-  background-color: var(--dark);
+  background-color: var(--orange);
   align-items: center;
 }
 
 .logo {
-  top: 20px;
-  left: 20px;
-  position: absolute;
   width: 200px;
+  margin: 15px;
 }
 
 .title {
   font-size: 2rem;
   font-weight: 400;
   color: var(--white);
-  margin: 25px 250px;
+  margin: 15px 250px;
 }
 
 .nav-links-container {
@@ -147,7 +145,7 @@ input:focus {
 }
 
 .settings-button {
-  border: solid var(--light) 3px;
+  border: solid var(--mid-light) 3px;
   color: white;
   background: none;
   border-radius: 50px;
@@ -155,8 +153,8 @@ input:focus {
 }
 
 .settings-button:hover {
-  background: var(--light);
-  color: var(--dark);
+  background: var(--mid-light);
+  color: var(--black);
   box-shadow: 0px 0px 10px rgb(145, 255, 156);
   font-weight: 600;
 }
@@ -173,7 +171,7 @@ input:focus {
   z-index: -1;
   width: 100%;
   height: 65px;
-  background: var(--mid);
+  background: var(--orange);
 }
 
 .main-container {
