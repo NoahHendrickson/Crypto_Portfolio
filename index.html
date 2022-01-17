@@ -7,7 +7,8 @@
   <title>c r p o - CryptoPortfolio</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://use.typekit.net/lkt4ltr.css"></head>
-
+  <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-core.min.js"></script>
+  <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-pie.min.js"></script>
 <body>
   <header>
     <nav>
@@ -43,26 +44,69 @@
           </li>
           <li>
             <span>Buy Me Chipotle</span>
+            <div class="dropdown donate">
+              <button class="donate-button">Send BTC</button>
+              <button class="donate-button">Send ETH</button>
+              <button class="donate-button">Paypal</button>
+              <button class="donate-button">Cashapp</button>
+            </div>
           </li>
           <li>
             <span>Settings</span>
+            <div class="dropdown settings-dropdown">
+              <div class="settings-dropdown">
+              <span class="settings-title">Theme</span> 
+                <select>
+                  <option>USD</option>
+                  <option>EURO</option>
+                  <option>CAD</option>
+                </select>
+              </div>
+            </div>
           </li>
         </ul>
       </div>
       <div class="price-slider">
         <ul class="prices">
-          <li>BTC $43,543</li>
+          <li>BTC ✌️ $43,543</li>
           <li>ETH $3,365</li>
           <li>DOT $27.42</li>
           <li>SOL 157.43</li>
-          <li></li>
-          <li></li>
+          <li>ADA 1.48</li>
+          <li>AVAX 93.54</li>
           <li></li>
         </ul>
       </div>
-      
     </nav>
   </header>
+  <div class="main">
+    <div class="side-nav">
+      <h1>Wallets</h1>
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Amount</th>
+          <th>Price</th>
+          <th>Exchange</th>
+        </tr>
+        <tr>
+          <td>ETH</td>
+          <td>2.32</td>
+          <td>4325</td>
+          <td>Coinbase</td>
+        </tr>
+        <tr>
+          <td>DOT</td>
+          <td>214.32</td>
+          <td>25.25</td>
+          <td>Kraken</td>
+        </tr>
+      </table>
+    </div>
+    <div class="content">
+      <div id="container"></div>
+    </div>
+  </div>
   
   <script src="main.js"></script>
 </body>
