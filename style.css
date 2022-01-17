@@ -6,7 +6,7 @@
 
 :root {
   --black: rgb(21, 22, 26);
-  --dark: #028E77;
+  --dark: rgb(2, 142, 119);
   --mid: #20B0B8;
   --mid-light: #07D6AF;
   --light: rgb(145, 255, 156);
@@ -16,180 +16,114 @@
 }
 
 body {
-  font-family: obvia, sans-serif;
-  font-size: 12px;
-  font-weight: 400;
+  font-family: neusa-next-std, sans-serif;
+  font-weight: 700;
   font-style: normal;
-  /* background: var(--black); */
-  position: relative;
-  z-index: -3;
 }
 
 nav {
   position: relative;
-  display: flex;
-  background-color: var(--orange);
+  display: grid;
+  grid-template-columns: 25vw 75vw;
+  grid-template-rows: 65px 65px;
+  background-color: var(--mid);
   align-items: center;
 }
 
 .logo {
-  width: 200px;
+  grid-row: span 2;
+}
+
+img {
+  width: 175px;
   margin: 15px;
 }
 
-.title {
-  font-size: 2rem;
-  font-weight: 400;
-  color: var(--white);
-  margin: 15px 250px;
+.nav-links {
 }
 
-.nav-links-container {
+.nav-buttons {
   display: flex;
-  margin-right: 100px;
-  width: 100%;
   justify-content: flex-end;
-}
-.nav-links { 
-  display: flex;
   align-items: center;
+  font-size: .8rem;
+}
+
+ul {
   list-style: none;
+  color: var(--white);
 }
 
 li {
   position: relative;
-  margin: 0px 25px;
 }
 
-.dropdown-button {
-  position: relative;
-  border: none;
-  color: var(--white);
-  background: none;
-  font-size: 1rem;
+span {
   margin: 0px 25px;
+  border: solid var(--light) 3px;
+  border-radius: 10px;
+  padding: 3px 7px;
+}
+
+span:hover {
+  color: var(--black);
+  background: var(--light);
+  box-shadow: 0px 0px 10px 2px var(--light);
 }
 
 form {
   display: flex;
   flex-direction: column;
+  padding: 25px;
 }
 
 label {
+  color: var(--black);
   font-size: 1rem;
-  margin: 5px 0px;
 }
 
 input {
-  background: var(--white);
-  border: none;
-  border-radius: 50px;
+  border: solid var(--black) 3px;
+  border-radius: 8px;
+  margin: 5px 0px 15px 0px;
   padding: 5px;
-  outline: solid var(--mid) 3px;
+  background: var(--white);
 }
 
-input::placeholder {
-  color: #0003;
-  font-size: .75rem;
-  padding-left: 5px;
+.long-field {
+  padding-bottom: 50px;
 }
 
 input:focus {
-  box-shadow: 0px 0px 5px 5px var(--mid-light);
+  outline: none;
 }
 
-.login-options-container {
-  width: 100%;
-  display: flex;
-  margin-top: 15px;
-  justify-content: space-between;
-}
-
-.signup-button {
-  background: none;
+button {
+  width: 50%;
+  margin: 5px;
+  padding: 5px;
   border: none;
+  border-radius: 5px;
+  background: var(--black);
+  color: var(--white);
+  box-shadow: 1px 1px 5px 0px rgba(1, 61, 51, .5);
 }
 
-.login-button {
-  border: solid var(--dark) 3px;
-  color: var(--dark);
-  background: none;
-  border-radius: 50px;
-  padding: 3px 6px;
-}
-
-.dropdown-anchor {
-  position: relative;
-}
-
-.dropdown-menu {
-  display: flex;
-  flex-direction: column;
+.dropdown {
+  display: none;
   position: absolute;
-  top: 0px;
+  top: 35px;
   left: 25px;
-  color: var(--black);
   background: var(--light);
-  box-shadow: 0px 5px 10px rgba(21, 22, 26, 0.4);
-  padding: 25px;
   border-radius: 15px;
-  transition: opacity 200ms, transform 100ms;
-  opacity: 0;
-  pointer-events: none;
+  box-shadow: 5px 5px 10px 2px rgba(21, 22, 26, .3);
 }
 
-.dropdown-menu.active {
-  opacity: 1;
-  pointer-events: all;
-  transform: translateY(25px);
+.prices {
+  display: flex;
+  font-size: 1.25rem;
 }
 
-.settings-button {
-  border: solid var(--mid-light) 3px;
-  color: white;
-  background: none;
-  border-radius: 50px;
-  padding: 3px 6px;
-}
-
-.settings-button:hover {
-  background: var(--mid-light);
-  color: var(--black);
-  box-shadow: 0px 0px 10px rgb(145, 255, 156);
-  font-weight: 600;
-}
-
-.decoration-line {
-  width: 100%;
-  height: 10px;
-  background: var(--light);
-  box-shadow: 0px 5px 10px rgba(21, 22, 26, 0.4);
-}
-
-.prices-container {
-  position: relative;
-  z-index: -1;
-  width: 100%;
-  height: 65px;
-  background: var(--orange);
-}
-
-.main-container {
-  display: grid;
-  grid-template-columns: 25vw 75vw;
-  height: 100vh;
-}
-
-.side-nav {
-  position: relative;
-  z-index: -2;
-  background: var(--black);
-  box-shadow: 10px 0px 15px rgba(0, 0, 0, 1);
-
-}
-
-.main {
-  position: relative;
-  z-index: -3;
-  background: var(--black);
+.prices > li {
+  margin: 25px;
 }

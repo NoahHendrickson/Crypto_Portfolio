@@ -11,39 +11,59 @@
 <body>
   <header>
     <nav>
-      <img class="logo" src="icons/crpo-logo.svg">
-      <div class="nav-links-container">
-        <div class="nav-links">
-          <div class="dropdown-anchor">
-            <button class="dropdown-button">Profile</button>
-            <div class="dropdown-menu">
+      <div class="logo">
+        <img src="/icons/crpo-logo.svg">
+      </div>
+      <div class="nav-links">
+        <ul class="nav-buttons">
+          <li>
+            <span>Profile</span>
+            <div class="dropdown">
               <form>
                 <label>Username</label>
-                <input placeholder="Username or Email"></input>
+                <input placeholder="Email or Username"></input>
                 <label>Password</label>
-                <input placeholder="secret words here"></input>
+                <input placeholder="Password.."></input>
+                <button>Login</button>
+                <button>Sign Up</button>
               </form>
-              <div class="login-options-container">
-                <button class="signup-button">Sign Up</button>
-                <button class="login-button">Login</button>
-              </div>
             </div>
-          </div>
-          <button class="dropdown-button">Contact</button>
-          <button class="dropdown-button">Buy Me Chipotle</button>
-          <button class="settings-button">Settings</button>
-        </div>
+          </li>
+          <li>
+            <span>Contact</span>
+            <div class="dropdown">
+              <form>
+                <label>Subject</label>
+                <input placeholder="What's Up?"></input>
+                <label>Message</label>
+                <input class="long-field" placeholder="Dive deep"></input>
+                <button>Submit</button>
+              </form>
+            </div>
+          </li>
+          <li>
+            <span>Buy Me Chipotle</span>
+          </li>
+          <li>
+            <span>Settings</span>
+          </li>
+        </ul>
       </div>
+      <div class="price-slider">
+        <ul class="prices">
+          <li>BTC $43,543</li>
+          <li>ETH $3,365</li>
+          <li>DOT $27.42</li>
+          <li>SOL 157.43</li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+      </div>
+      
     </nav>
   </header>
-  <div class="main-container">
-    <div class="side-nav">
-
-    </div>
-    <div class="main">
-
-    </div> 
-  </div>
+  
   <script src="main.js"></script>
 </body>
 </html>
