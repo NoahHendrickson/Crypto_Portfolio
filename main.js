@@ -1,27 +1,35 @@
-anychart.onDocumentReady(function() {
-
-  // set the data
-  var data = [
-      {x: "White", value: 223553265},
-      {x: "Black or African American", value: 38929319},
-      {x: "American Indian and Alaska Native", value: 2932248},
-      {x: "Asian", value: 14674252},
-      {x: "Native Hawaiian and Other Pacific Islander", value: 540013},
-      {x: "Some Other Race", value: 19107368},
-      {x: "Two or More Races", value: 9009073}
-  ];
-
-  // create the chart
-  var chart = anychart.pie();
-
-  // set the chart title
-  chart.title("Population by Race for the United States: 2010 Census");
-
-  // add the data
-  chart.data(data);
-
-  // display the chart in the container
-  chart.container('container');
-  chart.draw();
-
+const ctx = document.getElementById('myChart').getContext('2d');
+const myChart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+        labels: ['ETH', 'DOT', 'SOL', 'ADA', 'AVAX'],
+        datasets: [{
+            label: '# of Votes',
+            data: [12, 19, 3, 5, 2],
+            backgroundColor: [
+                'rgb(2, 142, 119)',
+                'rgb(145, 255, 156)',
+                'rgba(244, 246, 231, 1)',
+                'rgb(250, 124, 8)',
+                'rgba(132, 126, 115, 1)',
+                'rgb(32, 176, 184))'
+            ],
+            borderColor: [
+              'rgb(21, 22, 26)',
+              'rgb(21, 22, 26)',
+              'rgb(21, 22, 26)',
+              'rgb(21, 22, 26)',
+              'rgb(21, 22, 26)',
+              'rgb(21, 22, 26)',
+            ],
+            borderWidth: 4
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
 });

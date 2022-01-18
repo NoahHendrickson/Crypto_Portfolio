@@ -6,9 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>c r p o - CryptoPortfolio</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://use.typekit.net/lkt4ltr.css"></head>
-  <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-core.min.js"></script>
-  <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-pie.min.js"></script>
+  <link rel="stylesheet" href="https://use.typekit.net/lkt4ltr.css">
+</head>
+  
+
 <body>
   <header>
     <nav>
@@ -104,10 +105,32 @@
       </table>
     </div>
     <div class="content">
-      <div id="container"></div>
+      <div class="pie-chart-container">
+        <canvas id="myChart"></canvas>
+      </div>
+      <div class="portfolio-info">
+        <ul class="portfolio-values">
+          <li>
+            <span>Peak Value 🤜</span>
+            <span>30,345 USD</span>
+          </li>
+          <li>
+            <span>Current Value 🤜</span>
+            <span>23,345 USD</span>
+          </li>
+          <li>
+            <span>P/L 24hr 🤜</span>
+            <span>+10%</span>
+          </li>
+          <li>
+            <span>P/L 30d 🤜</span>
+            <span>-3%</span>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
-  
-  <script src="main.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.bundle.min.js"></script>
+<script src="main.js"></script>
 </body>
 </html>
