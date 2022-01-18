@@ -12,7 +12,6 @@ const myChart = new Chart(ctx, {
                 'rgba(244, 246, 231, 1)',
                 'rgb(250, 124, 8)',
                 'rgba(132, 126, 115, 1)',
-                'rgb(32, 176, 184))'
             ],
             borderColor: [
               'rgb(21, 22, 26)',
@@ -20,9 +19,8 @@ const myChart = new Chart(ctx, {
               'rgb(21, 22, 26)',
               'rgb(21, 22, 26)',
               'rgb(21, 22, 26)',
-              'rgb(21, 22, 26)',
             ],
-            borderWidth: 4
+            borderWidth: 2
         }]
     },
     options: {
