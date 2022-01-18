@@ -31,3 +31,20 @@ const myChart = new Chart(ctx, {
         }
     }
 });
+
+const navButtons = document.querySelector('.nav-buttons');
+const profileDropdown = document.querySelector('.profile-dropdown');
+const contactDropdown = document.querySelector('.contact-dropdown');
+
+navButtons.addEventListener('click', e => {
+  if(e.target.textContent === "Profile") {
+    profileDropdown.classList.toggle('active')
+    console.log('hi')
+  }
+  if(e.target.textContent === "Contact") {
+    contactDropdown.classList.toggle('active')
+    console.log('hi')
+  }
+  
+})
+console.log(navButtons)

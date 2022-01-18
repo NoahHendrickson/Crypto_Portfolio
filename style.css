@@ -41,7 +41,11 @@ img {
   margin: 15px auto;
 }
 
-.nav-links {
+@media (max-width: 40rem) {
+  .nav-buttons {
+   display: flex;
+   flex-direction: column;
+ } 
 }
 
 .nav-buttons {
@@ -56,7 +60,7 @@ ul {
   color: var(--white);
 }
 
-li {
+.nav-buttons > li {
   position: relative;
 }
 
@@ -65,6 +69,7 @@ li {
   border: solid var(--light) 3px;
   border-radius: 10px;
   padding: 3px 7px;
+  cursor: pointer;
 }
 
 li > span:hover {
@@ -131,13 +136,29 @@ button {
 }
 
 .dropdown {
-  display: none;
+  pointer-events: none;
+  display: flex;
   position: absolute;
   top: 35px;
   left: 25px;
   background: var(--light);
   border-radius: 15px;
   box-shadow: 5px 5px 10px 2px rgba(21, 22, 26, .3);
+  opacity: 0;
+  transform: translateY(-25px);
+  transition: opacity 100ms, transform 100ms;
+}
+
+.profile-dropdown.active {
+  pointer-events: all;
+  opacity: 1;
+  transform: translate(0px);
+}
+
+.contact-dropdown.active {
+  pointer-events: all;
+  opacity: 1;
+  transform: translate(0px);
 }
 
 .settings-dropdown {
@@ -168,10 +189,20 @@ select {
 .prices {
   display: flex;
   font-size: 1.25rem;
+  overflow: hidden;
 }
 
 .prices > li {
-  margin: 25px;
+  margin: 15px;
+}
+
+@media (max-width: 40rem) {
+  .prices {
+    font-size: .75rem;
+  }
+  .prices > li {
+    margin: 5px;
+  }
 }
 
 .main {
@@ -183,7 +214,7 @@ select {
 @media only screen and (max-width: 800px) {
   .main {
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows:30vh 70vh;
   }
 } 
 
