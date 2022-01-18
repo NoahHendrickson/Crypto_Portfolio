@@ -33,10 +33,13 @@ const myChart = new Chart(ctx, {
 });
 
 const navButtons = document.querySelector('.nav-buttons');
-const profileDropdown = document.querySelector('.profile-dropdown');
-const contactDropdown = document.querySelector('.contact-dropdown');
+
 
 navButtons.addEventListener('click', e => {
+  const profileDropdown = document.querySelector('.profile-dropdown');
+  const contactDropdown = document.querySelector('.contact-dropdown');
+  const supportDropdown = document.querySelector('.support-dropdown')
+  const settingsDropdown = document.querySelector('.settings-dropdown')
   if(e.target.textContent === "Profile") {
     profileDropdown.classList.toggle('active')
     console.log('hi')
@@ -45,6 +48,13 @@ navButtons.addEventListener('click', e => {
     contactDropdown.classList.toggle('active')
     console.log('hi')
   }
-  
+  if(e.target.textContent === "Buy Me Chipotle") {
+    supportDropdown.classList.toggle('active')
+    console.log('hi')
+  }
+  if(e.target.textContent === "Settings") {
+    settingsDropdown.classList.toggle('active')
+    console.log('hi')
+  }
 })
 console.log(navButtons)

@@ -149,26 +149,30 @@ button {
   transition: opacity 100ms, transform 100ms;
 }
 
-.profile-dropdown.active {
-  pointer-events: all;
-  opacity: 1;
-  transform: translate(0px);
-}
-
-.contact-dropdown.active {
-  pointer-events: all;
-  opacity: 1;
-  transform: translate(0px);
-}
-
 .settings-dropdown {
-  display: none;
   align-items: center;
   flex-direction: column;
   height: 150px;
   width: 150px;
   left: -60px;
 }
+
+.profile-dropdown.active, 
+.contact-dropdown.active, 
+.support-dropdown.active,
+.settings-dropdown.active {
+  pointer-events: all;
+  opacity: 1;
+  transform: translate(0px);
+}
+
+.contact-dropdown.active, .support-dropdown.active {
+  pointer-events: all;
+  opacity: 1;
+  transform: translate(0px);
+}
+
+
 
 .settings-title {
   color: var(--black);
@@ -199,6 +203,7 @@ select {
 @media (max-width: 40rem) {
   .prices {
     font-size: .75rem;
+    overflow: hidden;
   }
   .prices > li {
     margin: 5px;
