@@ -20,15 +20,18 @@ const myChart = new Chart(ctx, {
               'rgb(21, 22, 26)',
               'rgb(21, 22, 26)',
             ],
-            borderWidth: 2
+            borderWidth: 10
         }]
     },
     options: {
-        scales: {
-            y: {
-                beginAtZero: true
+      lugins: {
+        legend: {
+            display: true,
+            labels: {
+                color: 'rgb(255, 99, 132)'
             }
         }
+    }
     }
 });
 
@@ -36,25 +39,71 @@ const navButtons = document.querySelector('.nav-buttons');
 
 
 navButtons.addEventListener('click', e => {
-  const profileDropdown = document.querySelector('.profile-dropdown');
-  const contactDropdown = document.querySelector('.contact-dropdown');
-  const supportDropdown = document.querySelector('.support-dropdown')
-  const settingsDropdown = document.querySelector('.settings-dropdown')
+  const profile = document.querySelector('.profile-dropdown').classList;
+  const contact = document.querySelector('.contact-dropdown').classList;
+  const support = document.querySelector('.support-dropdown').classList;
+  const settings = document.querySelector('.settings-dropdown').classList;
+  const dropdown = document.querySelectorAll('.dropdown');
+
+  const profileButton = document.querySelector('.nav-button').classList;
+  const contactButton = document.querySelector('.contact-button').classList;
+  const supportButton = document.querySelector('.support-button').classList;
+  const settingsButton = document.querySelector('.settings-button').classList;
+
   if(e.target.textContent === "Profile") {
-    profileDropdown.classList.toggle('active')
-    console.log('hi')
+    profile.toggle('active')
+    profileButton.toggle('active')
+    if(contact.contains('active') || 
+      support.contains('active') || 
+      settings.contains('active')) {
+        contact.remove('active')
+        support.remove('active')
+        settings.remove('active')
+        contactButton.remove('active')
+        supportButton.remove('active')
+        settingsButton.remove('active')
+    }
   }
   if(e.target.textContent === "Contact") {
-    contactDropdown.classList.toggle('active')
-    console.log('hi')
+    contact.toggle('active')
+    contactButton.toggle('active')
+    if(profile.contains('active') || 
+      support.contains('active') || 
+      settings.contains('active')) {
+        profile.remove('active')
+        support.remove('active')
+        settings.remove('active')
+        profileButton.remove('active')
+        supportButton.remove('active')
+        settingsButton.remove('active')
+    }
   }
   if(e.target.textContent === "Buy Me Chipotle") {
-    supportDropdown.classList.toggle('active')
-    console.log('hi')
+    support.toggle('active')
+    supportButton.toggle('active')
+    if(profile.contains('active') || 
+      contact.contains('active') || 
+      settings.contains('active')) {
+        profile.remove('active')
+        contact.remove('active')
+        settings.remove('active')
+        profileButton.remove('active')
+        contactButton.remove('active')
+        settingsButton.remove('active')
+    }
   }
   if(e.target.textContent === "Settings") {
-    settingsDropdown.classList.toggle('active')
-    console.log('hi')
+    settings.toggle('active')
+    settingsButton.toggle('active')
+    if(profile.contains('active') || 
+      contact.contains('active') || 
+      support.contains('active')) {
+        profile.remove('active')
+        contact.remove('active')
+        support.remove('active')
+        profileButton.remove('active')
+        supportButton.remove('active')
+        contactButton.remove('active')
+    }
   }
 })
-console.log(navButtons)
