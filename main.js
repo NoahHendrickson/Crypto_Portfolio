@@ -35,75 +35,29 @@ const myChart = new Chart(ctx, {
     }
 });
 
-const navButtons = document.querySelector('.nav-buttons');
+const navLinks = document.querySelector('.nav-links')
 
+navLinks.addEventListener('click', e => {
+  const dropdownButton = e.target.matches('.nav-button')
+  if (!dropdownButton && e.target.closest(".dropdown") != null) return
 
-navButtons.addEventListener('click', e => {
-  const profile = document.querySelector('.profile-dropdown').classList;
-  const contact = document.querySelector('.contact-dropdown').classList;
-  const support = document.querySelector('.support-dropdown').classList;
-  const settings = document.querySelector('.settings-dropdown').classList;
-  const dropdown = document.querySelectorAll('.dropdown');
-
-  const profileButton = document.querySelector('.nav-button').classList;
-  const contactButton = document.querySelector('.contact-button').classList;
-  const supportButton = document.querySelector('.support-button').classList;
-  const settingsButton = document.querySelector('.settings-button').classList;
-
-  if(e.target.textContent === "Profile") {
-    profile.toggle('active')
-    profileButton.toggle('active')
-    if(contact.contains('active') || 
-      support.contains('active') || 
-      settings.contains('active')) {
-        contact.remove('active')
-        support.remove('active')
-        settings.remove('active')
-        contactButton.remove('active')
-        supportButton.remove('active')
-        settingsButton.remove('active')
-    }
-  }
-  if(e.target.textContent === "Contact") {
-    contact.toggle('active')
-    contactButton.toggle('active')
-    if(profile.contains('active') || 
-      support.contains('active') || 
-      settings.contains('active')) {
-        profile.remove('active')
-        support.remove('active')
-        settings.remove('active')
-        profileButton.remove('active')
-        supportButton.remove('active')
-        settingsButton.remove('active')
-    }
-  }
-  if(e.target.textContent === "Buy Me Chipotle") {
-    support.toggle('active')
-    supportButton.toggle('active')
-    if(profile.contains('active') || 
-      contact.contains('active') || 
-      settings.contains('active')) {
-        profile.remove('active')
-        contact.remove('active')
-        settings.remove('active')
-        profileButton.remove('active')
-        contactButton.remove('active')
-        settingsButton.remove('active')
-    }
-  }
-  if(e.target.textContent === "Settings") {
-    settings.toggle('active')
-    settingsButton.toggle('active')
-    if(profile.contains('active') || 
-      contact.contains('active') || 
-      support.contains('active')) {
-        profile.remove('active')
-        contact.remove('active')
-        support.remove('active')
-        profileButton.remove('active')
-        supportButton.remove('active')
-        contactButton.remove('active')
-    }
-  }
+  let currentDropdown
+  if(dropdownButton) {
+    currentDropdown = e.target.closest('.dropdown')
+    currentDropdown.classList.toggle('active')
+    e.target.closest('.nav-button').classList.toggle('active')
+  } 
+  let currentButton = e.target.closest('.nav-button')
+  document.querySelectorAll(".nav-button.active").forEach(button => {
+    if (button === currentButton) return
+    button.classList.remove("active")
+  })
+  
+  document.querySelectorAll(".dropdown.active").forEach(dropdown => {
+    if (dropdown === currentDropdown) return
+    dropdown.classList.remove("active")
+  })
 })
+
+
+  

@@ -17,55 +17,55 @@
         <img src="/icons/crpo-logo.svg">
       </div>
       <div class="nav-links">
-        <ul class="nav-buttons">
-          <li>
-            <span class="nav-button">Profile</span>
-            <div class="dropdown profile-dropdown">
-              <form>
-                <label>Username</label>
-                <input placeholder="Email or Username"></input>
-                <label>Password</label>
-                <input placeholder="Password.."></input>
-                <button>Login</button>
-                <button>Sign Up</button>
-              </form>
-            </div>
-          </li>
-          <li>
-            <span class="nav-button contact-button">Contact</span>
-            <div class="dropdown contact-dropdown">
-              <form>
-                <label>Subject</label>
-                <input placeholder="What's Up?"></input>
-                <label>Message</label>
-                <input class="long-field" placeholder="Dive deep"></input>
-                <button>Submit</button>
-              </form>
-            </div>
-          </li>
-          <li>
-            <span class="nav-button support-button">Buy Me Chipotle</span>
-            <div class="dropdown donate support-dropdown">
+        <div class="dropdown">
+          <button class="nav-button">Profile</button>
+          <div class="dropdown-menu">
+            <form>
+              <label>Username</label>
+              <input placeholder="Email or Username"></input>
+              <label>Password</label>
+              <input placeholder="Password.."></input>
+              <button class="small-button">Login</button>
+              <button class="small-button">Sign Up</button>
+            </form>
+          </div>
+        </div>
+        <div class="dropdown">
+          <button class="nav-button">Contact</button>
+          <div class="dropdown-menu">
+            <form>
+              <label>Subject</label>
+              <input placeholder="What's Up"></input>
+              <label>Message</label>
+              <input class="long-field" placeholder="Dive Deep"></input>
+              <button class="small-button">Submit</button>
+            </form>
+          </div>
+        </div>
+        <div class="dropdown">
+          <button class="nav-button">Buy Me Chipotle</button>
+          <div class="dropdown-menu">
+            <div class="donate-menu">
               <button class="donate-button">Send BTC</button>
               <button class="donate-button">Send ETH</button>
               <button class="donate-button">Paypal</button>
               <button class="donate-button">Cashapp</button>
             </div>
-          </li>
-          <li>
-            <span class="nav-button settings-button">Settings</span>
-            <div class="dropdown settings-dropdown">
-              <div class="settings-dropdown">
-              <span class="settings-title">Theme</span> 
-                <select>
-                  <option>USD</option>
-                  <option>EURO</option>
-                  <option>CAD</option>
-                </select>
-              </div>
+          </div>
+        </div>
+        <div class="dropdown">
+          <button class="nav-button">Settings</button>
+          <div class="dropdown-menu">
+            <div class="settings-dropdown">
+              <span>Currency</span>
+              <select>
+                <option>USD</option>
+                <option>EURO</option>
+                <option>CAD</option>
+              </select>
             </div>
-          </li>
-        </ul>
+          </div>
+        </div>
       </div>
       <div class="price-slider">
         <ul class="prices">
