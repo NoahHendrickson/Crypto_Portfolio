@@ -79,27 +79,32 @@
   </header>
   <div class="main">
     <div class="side-nav">
+      <div class="form-container">
+        <form class="wallet-form" onsubmit="addCrypto(); cryptoName(); updateChart(); return false;" required>
+          <input type="text" placeholder="Ticker" class="ticker" required />
+          <input placeholder="Amount" class="amount" required />
+          <input placeholder="Exchange" class="exchange" required /></br>
+          <input class="form-button" type="submit" value="+"/>
+          <div class="dotdot">
+            <div class="dots left"></div>
+            <div class="dots mid"></div>
+            <div class="dots right"></div>
+          </div>
+        </form>
+      </div>
       <h1>Wallets</h1>
-      <table>
-        <tr>
-          <th>Name</th>
-          <th>Amount</th>
-          <th>Price</th>
-          <th>Exchange</th>
-        </tr>
-        <tr>
-          <td>ETH</td>
-          <td>2.32</td>
-          <td>4325</td>
-          <td>Coinbase</td>
-        </tr>
-        <tr>
-          <td>DOT</td>
-          <td>214.32</td>
-          <td>25.25</td>
-          <td>Kraken</td>
-        </tr>
+      <table class="wallet">
+        <tbody>
+          <tr>
+            <th>Name</th>
+            <th>Amount</th>
+            <th>Exchange</th>
+            <th>Price</th>
+            <th>USD Value</th>
+          </tr>
+        </tbody>
       </table>
+      
     </div>
     <div class="content">
       <div class="pie-chart-container">

@@ -2,10 +2,10 @@ const ctx = document.getElementById('myChart').getContext('2d');
 const myChart = new Chart(ctx, {
     type: 'pie',
     data: {
-        labels: ['ETH', 'DOT', 'SOL', 'ADA', 'AVAX'],
+        labels: [],
         datasets: [{
             label: '# of Votes',
-            data: [12, 19, 3, 5, 2],
+            data: [],
             backgroundColor: [
                 'rgb(2, 142, 119)',
                 'rgb(145, 255, 156)',
@@ -20,13 +20,13 @@ const myChart = new Chart(ctx, {
               'rgb(21, 22, 26)',
               'rgb(21, 22, 26)',
             ],
-            borderWidth: 10
+            borderWidth: 0
         }]
     },
     options: {
       lugins: {
         legend: {
-            display: true,
+            display: false,
             labels: {
                 color: 'rgb(255, 99, 132)'
             }
@@ -35,9 +35,11 @@ const myChart = new Chart(ctx, {
     }
 });
 
-const navLinks = document.querySelector('.nav-links')
 
-navLinks.addEventListener('click', e => {
+
+const navLinks = document.querySelector('.nav-links')
+const doc = document
+document.addEventListener('click', e => {
   const dropdownButton = e.target.matches('.nav-button')
   if (!dropdownButton && e.target.closest(".dropdown") != null) return
 
@@ -58,6 +60,44 @@ navLinks.addEventListener('click', e => {
     dropdown.classList.remove("active")
   })
 })
+
+
+
+const addCrypto = () => {
+  const table = document.querySelector('.wallet')
+  const row = table.insertRow();
+  const cell1 = row.insertCell()
+  const cell2 = row.insertCell()
+  const cell3 = row.insertCell()
+
+  cell1.innerHTML = document.querySelector('.ticker').value;
+  cell2.innerHTML =  document.querySelector('.amount').value;
+  cell3.innerHTML =  document.querySelector('.exchange').value;
+}
+
+let assetNames = []
+let assetAmounts = []
+function cryptoName() {
+  assetNames.push(document.querySelector('.ticker').value)
+  assetAmounts.push(document.querySelector('.amount').value)
+}
+
+
+
+function updateChart() {
+  myChart.data.datasets[0].data = []
+  myChart.data.labels = []
+  assetNames.forEach(element => {
+    myChart.data.labels.push(element)
+  });
+  assetAmounts.forEach(e => {
+    myChart.data.datasets[0].data.push(e)
+  });
+
+  console.log(myChart.data.labels)
+  console.log(myChart.data.datasets[0].data)
+  myChart.update();
+}
 
 
   

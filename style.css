@@ -27,6 +27,7 @@ body {
 
 nav {
   position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: 30% 70%;
   grid-template-rows: 65px 65px;
@@ -52,7 +53,8 @@ ul {
 
 .nav-links {
   display: flex;
-  justify-content: flex-start;
+  justify-content: flex-end;
+  margin-right: 150px;
 }
 
 .nav-button {
@@ -200,18 +202,13 @@ select {
 } 
 
 .side-nav {
+  position: relative;
+  z-index: 0;
   box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 1);
   display: flex;
+  align-items: center;
   flex-direction: column;
   background: var(--black);
-}
-
-.content {
-  position: relative;
-  display: flex;
-  z-index: -1;
-  background: var(--black);
-  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 1);
 }
 
 h1 {
@@ -221,12 +218,10 @@ h1 {
 }
 
 table {
-  width: 50%;
-  display: flex;
+  width: 75%;
   text-align: center;
-  justify-content: center;
   font-size: 1rem;
-  margin: 0px auto;
+  margin: 0px auto 25px auto;
   color: var(--white);
 }
 
@@ -240,6 +235,74 @@ td {
   padding: 3px 15px;
 }
 
+.wallet-form {
+  position: relative;
+  z-index: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background: var(--orange);
+  border-radius: 0px 0px 20px 20px;
+  margin: auto;
+  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 1);
+  transform: translateY(-60px);
+  transition: transform 200ms;
+}
+
+.wallet-form:hover {
+  transform: translateY(0px);
+}
+
+.form-container {
+  width: 100%;
+}
+
+.ticker, .amount, .exchange {
+  width: 25%;
+  margin: 10px 5px 10px 5px;
+  border: none;
+}
+
+.form-button {
+  font-weight: 600;
+  font-size: 1.25em;
+  width: 25%;
+  margin: 10px 5px 10px 5px;
+  color: var(--black);
+  background: var(--mid-light);
+  border-radius: 8px;
+  border: none;
+  padding: 0px 0px;
+  cursor: pointer;
+  box-shadow: 3px 3px 5px 0px rgba(37, 26, 18, 0.5);
+}
+
+.dotdot {
+  position: absolute;
+  display: flex;
+  font-size: 3em;
+  font-weight: 900;
+  bottom: 10px;
+  right: calc(50% - 18px);
+}
+
+.dots {
+  margin: 0px 3px;
+  width: 8px;
+  height: 8px;
+  background: var(--white);
+  border-radius: 50px;
+}
+
+.content {
+  position: relative;
+  display: flex;
+  z-index: -3;
+  background: var(--black);
+  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 1);
+}
+
 .pie-chart-container {
   margin-top: 25px;
   width: 100%;
@@ -247,7 +310,7 @@ td {
 
 .portfolio-info {
   position: relative;
-  z-index: -3;
+  z-index: -4;
 }
 .portfolio-info {
   height: 100%;
@@ -267,5 +330,6 @@ td {
 }
 
 #myChart {
+  width: 50%;
 }
 
