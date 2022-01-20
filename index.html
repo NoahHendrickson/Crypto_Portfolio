@@ -80,7 +80,7 @@
   <div class="main">
     <div class="side-nav">
       <div class="form-container">
-        <form class="wallet-form" onsubmit="addCrypto(); cryptoName(); updateChart(); return false;" required>
+        <form class="wallet-form" onsubmit="addCrypto(); updateChart(); return false;" required>
           <input type="text" placeholder="Ticker" class="ticker" required />
           <input placeholder="Amount" class="amount" required />
           <input placeholder="Exchange" class="exchange" required /></br>
@@ -119,7 +119,7 @@
         </li>
         <li>
           <span>Current Value 🤜</span>
-          <span>23,345 USD</span>
+          <span class="peak">---</span>
         </li>
         <li>
           <span>P/L 24hr 🤜</span>
