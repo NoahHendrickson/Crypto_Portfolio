@@ -118,7 +118,22 @@ fetch(
   .then((response) => response.json())
   .then((data) => cryptoInfo.push(data));
 
-console.log(cryptoInfo);
+function addToPriceSlider() {
+  const parentE = document.querySelector(".price-slider");
+  const siblingE = document.querySelector(".asset-slideout");
+  const newSpan = document.createElement("span");
+  newSpan.classList.add("assets");
+  const newText = document.querySelector(".add-asset-button").value;
+  for (i = 0; i < cryptoInfo[0].length; i++) {
+    if (cryptoInfo[0][i].symbol === newText) {
+      const assetSymbol = cryptoInfo[0][i].symbol;
+      const assetPrice = cryptoInfo[0][i].current_price;
+
+      newSpan.innerHTML = `${assetSymbol.toUpperCase()}  ${assetPrice}`;
+      parentE.insertBefore(newSpan, siblingE);
+    }
+  }
+}
 
 // function getPrice() {
 //   let cryptoTicker = document.querySelector(".ticker").value;

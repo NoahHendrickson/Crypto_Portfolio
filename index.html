@@ -22,9 +22,9 @@
           <div class="dropdown-menu">
             <form>
               <label>Username</label>
-              <input placeholder="Email or Username"></input>
+              <input class="nav-inputs" placeholder="Email or Username"></input>
               <label>Password</label>
-              <input placeholder="Password.."></input>
+              <input class="nav-inputs" placeholder="Password.."></input>
               <button class="small-button">Login</button>
               <button class="small-button">Sign Up</button>
             </form>
@@ -35,9 +35,9 @@
           <div class="dropdown-menu">
             <form>
               <label>Subject</label>
-              <input placeholder="What's Up"></input>
+              <input class="nav-inputs" placeholder="What's Up"></input>
               <label>Message</label>
-              <input class="long-field" placeholder="Dive Deep"></input>
+              <input class="nav-inputs long-field" placeholder="Dive Deep"></input>
               <button class="small-button">Submit</button>
             </form>
           </div>
@@ -67,13 +67,18 @@
           </div>
         </div>
       </div>
-      <div class="price-slider">
-        <ul class="prices">
-          <li>BTC $43,543</li>
-          <li>ETH $3,365</li>
-          <li>DOT $27.42</li>
-          <li></li>
-        </ul>
+      <div class="price-slider">  
+        <div class="asset-slideout">
+          <form onsubmit="addToPriceSlider(); return false">
+            <input class="add-asset-button" type="text" placeholder="Ticker"/>
+            <input class="smaller-button" type="submit" value="Add"/>
+          </form>
+          <div class="toggler">
+            <div class="dots-vert"></div>
+            <div class="dots-vert"></div>
+            <div class="dots-vert"></div>
+          </div>
+        </div>
       </div>
     </nav>
   </header>
