@@ -14,18 +14,18 @@ const myChart = new Chart(ctx, {
         label: "# of Votes",
         data: [],
         backgroundColor: [
+          "rgba(2, 142, 119, .5)",
+          "rgba(145, 255, 156, .5)",
+          "rgba(244, 246, 231, .5)",
+          "rgba(250, 124, 8, .5)",
+          "rgba(132, 126, 115, .5)",
+        ],
+        borderColor: [
           "rgb(2, 142, 119)",
           "rgb(145, 255, 156)",
           "rgba(244, 246, 231, 1)",
           "rgb(250, 124, 8)",
           "rgba(132, 126, 115, 1)",
-        ],
-        borderColor: [
-          "rgb(21, 22, 26)",
-          "rgb(21, 22, 26)",
-          "rgb(21, 22, 26)",
-          "rgb(21, 22, 26)",
-          "rgb(21, 22, 26)",
         ],
         borderWidth: 2,
       },
@@ -75,6 +75,8 @@ main.addEventListener("click", (e) => {
   // let checkmark = document.createTextNode("🆗");
   const one = document.querySelector(".one");
   const five = document.querySelector(".five");
+  const six = document.querySelector(".six");
+  const seven = document.querySelector(".seven");
   if (e.target.matches(".content-button")) {
     e.target.classList.toggle("active");
   }
@@ -84,8 +86,15 @@ main.addEventListener("click", (e) => {
   if (e.target.matches(".five")) {
     currentValue.classList.toggle("active");
   }
+  if (e.target.matches(".six")) {
+    hourlyPL.classList.toggle("active");
+  }
+  if (e.target.matches(".seven")) {
+    monthlyPL.classList.toggle("active");
+  }
 });
-
+const hourlyPL = document.querySelector(".hourly-PL");
+const monthlyPL = document.querySelector(".monthly-PL");
 const currentValue = document.querySelector(".current");
 const peakValue = document.querySelector(".peak");
 
