@@ -85,7 +85,7 @@
   <div class="main">
     <div class="side-nav">
       <div class="form-container">
-        <form class="wallet-form" onsubmit="addCrypto(); updateChart(); return false;" required>
+        <form class="slide-down wallet-slide" onsubmit="addCrypto(); updateChart(); return false;" required>
           <input type="text" placeholder="Ticker" class="ticker" required />
           <input placeholder="Amount" class="amount" required />
           <input placeholder="Exchange" class="exchange" required /></br>
@@ -109,22 +109,50 @@
           </tr>
         </tbody>
       </table>
-      
     </div>
     <div class="content">
+      <div class="form-container">
+        <div class="slide-down content-slide">
+          <div>
+            <button class="content-button one">USD Value</button>
+            <button class="content-button two">Show Ticker</button>
+            <button class="content-button three">Show Amount</button>
+          </div>
+          <div class="dotdot">
+            <div class="dots left"></div>
+            <div class="dots mid"></div>
+            <div class="dots right"></div>
+          </div>
+        </div>
+      </div>
+      <h1 class="content-header">CRPO is a Minimum Functionality Crypto Portfolio Tracker</h1>
       <div class="pie-chart-container">
         <canvas id="myChart"></canvas>
       </div>
     </div>
     <div class="portfolio-info">
+      <div class="form-container">
+        <div class="slide-down info-slide">
+          <div>
+            <button class="content-button four">Peak Value</button>
+            <button class="content-button five">Current Value</button>
+            <button class="content-button six">P/L 24hr</button>
+            <button class="content-button seven">P/L 30d</button>
+          </div>
+          <div class="dotdot">
+            <div class="dots left"></div>
+            <div class="dots mid"></div>
+            <div class="dots right"></div>
+          </div>
+        </div>
       <ul class="portfolio-values">
         <li>
           <span>Peak Value 🤜</span>
-          <span>30,345 USD</span>
+          <span class="Peak">30,345 USD</span>
         </li>
         <li>
           <span>Current Value 🤜</span>
-          <span class="peak">---</span>
+          <span class="current">---</span>
         </li>
         <li>
           <span>P/L 24hr 🤜</span>

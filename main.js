@@ -1,3 +1,9 @@
+fetch(
+  "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false"
+)
+  .then((response) => response.json())
+  .then((data) => cryptoInfo.push(data));
+
 const ctx = document.getElementById("myChart").getContext("2d");
 const myChart = new Chart(ctx, {
   type: "pie",
@@ -61,8 +67,30 @@ document.addEventListener("click", (e) => {
   });
 });
 
+const main = document.querySelector(".main");
+
+main.addEventListener("click", (e) => {
+  const slideDown = document.querySelector(".content-slide");
+  const contentButton = document.querySelector(".content-button");
+  // let checkmark = document.createTextNode("🆗");
+  const one = document.querySelector(".one");
+  const five = document.querySelector(".five");
+  if (e.target.matches(".content-button")) {
+    e.target.classList.toggle("active");
+  }
+  if (e.target.matches(".four")) {
+    peakValue.classList.toggle("active");
+  }
+  if (e.target.matches(".five")) {
+    currentValue.classList.toggle("active");
+  }
+});
+
+const currentValue = document.querySelector(".current");
+const peakValue = document.querySelector(".peak");
+
 const addCrypto = () => {
-  const peakValue = document.querySelector(".peak");
+  refreshPrices();
   const table = document.querySelector(".wallet");
   const row = table.insertRow();
   const cell1 = row.insertCell();
@@ -90,7 +118,7 @@ const addCrypto = () => {
     return a + b;
   }, 0);
 
-  peakValue.innerHTML = portfolioValue;
+  currentValue.innerHTML = portfolioValue;
 };
 
 let totalValues = [];
@@ -112,13 +140,16 @@ function updateChart() {
 
 let cryptoInfo = [];
 
-fetch(
-  "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false"
-)
-  .then((response) => response.json())
-  .then((data) => cryptoInfo.push(data));
+function refreshPrices() {
+  fetch(
+    "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false"
+  )
+    .then((response) => response.json())
+    .then((data) => cryptoInfo.push(data));
+}
 
 function addToPriceSlider() {
+  refreshPrices();
   const parentE = document.querySelector(".price-slider");
   const siblingE = document.querySelector(".asset-slideout");
   const newSpan = document.createElement("span");
