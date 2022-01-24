@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "chart.js": "^3.7.0",
-    "coingecko-api": "^1.0.10"
+    "coingecko-api": "^1.0.10",
+    "firebase": "^8.10.0"
   }
 }
