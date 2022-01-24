@@ -1,3 +1,8 @@
+var formatter = new Intl.NumberFormat("en-US", {
+  style: "currency",
+  currency: "USD",
+});
+
 fetch(
   "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false"
 )
@@ -6,7 +11,12 @@ fetch(
 
 const ctx = document.getElementById("myChart").getContext("2d");
 const myChart = new Chart(ctx, {
-  type: "pie",
+  type: "doughnut",
+  options: {
+    legend: {
+      position: "bottom",
+    },
+  },
   data: {
     labels: [],
     datasets: [
@@ -15,31 +25,27 @@ const myChart = new Chart(ctx, {
         data: [],
         backgroundColor: [
           "rgba(2, 142, 119, .5)",
+          "rgba(250, 124, 8, .5)",
           "rgba(145, 255, 156, .5)",
           "rgba(244, 246, 231, .5)",
-          "rgba(250, 124, 8, .5)",
           "rgba(132, 126, 115, .5)",
         ],
         borderColor: [
-          "rgb(2, 142, 119)",
-          "rgb(145, 255, 156)",
-          "rgba(244, 246, 231, 1)",
-          "rgb(250, 124, 8)",
-          "rgba(132, 126, 115, 1)",
+          "rgb(22, 26, 22)",
+          "rgb(22, 26, 22)",
+          "rgb(22, 26, 22)",
+          "rgb(22, 26, 22)",
+          "rgb(22, 26, 22)",
+          "rgb(22, 26, 22)",
+          // "rgba(2, 142, 119, 1)",
+          // "rgba(250, 124, 8, 1)",
+          // "rgba(145, 255, 156, 1)",
+          // "rgba(244, 246, 231, 1)",
+          // "rgba(132, 126, 115, 1)",
         ],
         borderWidth: 2,
       },
     ],
-  },
-  options: {
-    lugins: {
-      legend: {
-        display: false,
-        labels: {
-          color: "rgb(255, 99, 132)",
-        },
-      },
-    },
   },
 });
 
@@ -109,7 +115,7 @@ const addCrypto = () => {
   const cell5 = row.insertCell();
 
   let cryptoTicker = document.querySelector(".ticker").value;
-  cell1.innerHTML = cryptoTicker;
+  cell1.innerHTML = cryptoTicker.toUpperCase();
   for (i = 0; i < cryptoInfo[0].length; i++) {
     if (cryptoInfo[0][i].symbol === cryptoTicker) {
       cell4.innerHTML = cryptoInfo[0][i].current_price;
@@ -120,14 +126,14 @@ const addCrypto = () => {
   const values = Number(cell2.innerHTML) * Number(cell4.innerHTML);
   totalValues.push(values);
 
-  cell5.innerHTML = values;
+  cell5.innerHTML = formatter.format(values.toFixed(2));
   assetNames.push(document.querySelector(".ticker").value);
   assetAmounts.push(values);
   const portfolioValue = totalValues.reduce(function (a, b) {
     return a + b;
   }, 0);
 
-  currentValue.innerHTML = portfolioValue;
+  currentValue.innerHTML = formatter.format(portfolioValue);
 };
 
 let totalValues = [];
@@ -138,7 +144,7 @@ function updateChart() {
   myChart.data.datasets[0].data = [];
   myChart.data.labels = [];
   assetNames.forEach((element) => {
-    myChart.data.labels.push(element);
+    myChart.data.labels.push(element.toUpperCase());
   });
   assetAmounts.forEach((e) => {
     myChart.data.datasets[0].data.push(e);
