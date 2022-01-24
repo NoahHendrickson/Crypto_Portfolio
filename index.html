@@ -7,6 +7,7 @@
   <title>c r p o - CryptoPortfolio</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://use.typekit.net/lkt4ltr.css">
+  
 </head>
   
 
@@ -166,6 +167,29 @@
     </div>
   </div>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.bundle.min.js"></script>
-<script src="main.js"></script>
+<script src="main.js" defer></script>
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.4/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.4/firebase-analytics.js";
+  import { getAuth } from "https://www.gstatic.com/firebasejs/9.6.4/firebase-auth.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyCBd_PrOK6AJRPB7OHYLv4_4xOoS9tT2Ng",
+    authDomain: "crypto-portfolio-821b8.firebaseapp.com",
+    projectId: "crypto-portfolio-821b8",
+    storageBucket: "crypto-portfolio-821b8.appspot.com",
+    messagingSenderId: "1062782795182",
+    appId: "1:1062782795182:web:3facc50155351764031c3f",
+    measurementId: "G-2WCMZPG7WG"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+</script>
 </body>
 </html>
