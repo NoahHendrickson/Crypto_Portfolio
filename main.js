@@ -224,7 +224,7 @@ function addToPriceSlider() {
   }
 }
 
-let ws = new WebSocket("wss://stream.binance.com:9443/ws/usdt@trade");
+let ws = new WebSocket("wss://stream.binance.com:9443/ws/adausdt@trade");
 ws.onmessage = (event) => {
   let stockObject = JSON.parse(event.data);
   let btcPrice = stockObject.p;
