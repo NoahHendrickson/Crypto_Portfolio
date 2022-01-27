@@ -96,102 +96,63 @@ const myChart = new Chart(ctx, {
   options: options,
 });
 
-// const myChart = new Chart(ctx, {
-//   type: "pie",
-//   options: {
-//     plugins: {
-//       datalabels: {
-//         display: true,
-//         color: "red",
-//       },
-//     },
-//     legend: {
-//       position: "top",
-//     },
-//   },
-//   data: {
-//     labels: [],
-//     datasets: [
-//       {
-//         data: [],
-//         backgroundColor: [
-//           "rgba(2, 142, 119, .5)",
-//           "rgba(250, 124, 8, .5)",
-//           "rgba(145, 255, 156, .5)",
-//           "rgba(244, 246, 231, .5)",
-//           "rgba(132, 126, 115, .5)",
-//         ],
-//         borderColor: [
-//           "rgba(2, 142, 119, 1)",
-//           "rgba(250, 124, 8, 1)",
-//           "rgba(145, 255, 156, 1)",
-//           "rgba(244, 246, 231, 1)",
-//           "rgba(132, 126, 115, 1)",
-//         ],
-//         borderWidth: 3,
-//       },
-//     ],
-//   },
-// });
-
 const currentValue = document.querySelector(".current-value");
 
-const addCryptoToWallet = () => {
-  const table = document.querySelector(".wallet");
-  const row = table.insertRow();
-  const tickerCell = row.insertCell();
-  const amountCell = row.insertCell();
-  const exchangeCell = row.insertCell();
-  const priceCell = row.insertCell();
-  const totalCell = row.insertCell();
+// const addCryptoToWallet = () => {
+//   const table = document.querySelector(".wallet");
+//   const row = table.insertRow();
+//   const tickerCell = row.insertCell();
+//   const amountCell = row.insertCell();
+//   const exchangeCell = row.insertCell();
+//   const priceCell = row.insertCell();
+//   const totalCell = row.insertCell();
 
-  let cryptoTicker = document.querySelector(".ticker").value;
-  for (i = 0; i < cryptoInfo[0].length; i++) {
-    if (cryptoTicker === "avax") {
-      let cryptoTicker = document.querySelector(".ticker").value.toUpperCase();
-      tickerCell.innerHTML = cryptoTicker.toUpperCase();
-      priceCell.innerHTML = cryptoInfo[0][i].current_price;
-      amountCell.innerHTML = document.querySelector(".amount").value;
-      exchangeCell.innerHTML = document.querySelector(".exchange").value;
+//   let cryptoTicker = document.querySelector(".ticker").value;
+//   for (i = 0; i < cryptoInfo[0].length; i++) {
+//     if (cryptoTicker === "avax") {
+//       let cryptoTicker = document.querySelector(".ticker").value.toUpperCase();
+//       tickerCell.innerHTML = cryptoTicker.toUpperCase();
+//       priceCell.innerHTML = cryptoInfo[0][i].current_price;
+//       amountCell.innerHTML = document.querySelector(".amount").value;
+//       exchangeCell.innerHTML = document.querySelector(".exchange").value;
 
-      const values = Number(amountCell.innerHTML) * Number(priceCell.innerHTML);
+//       const values = Number(amountCell.innerHTML) * Number(priceCell.innerHTML);
 
-      totalCell.innerHTML = formatter.format(values.toFixed(2));
-    }
-    if (cryptoInfo[0][i].symbol === cryptoTicker) {
-      tickerCell.innerHTML = cryptoTicker.toUpperCase();
-      priceCell.innerHTML = cryptoInfo[0][i].current_price;
-      amountCell.innerHTML = document.querySelector(".amount").value;
-      exchangeCell.innerHTML = document.querySelector(".exchange").value;
+//       totalCell.innerHTML = formatter.format(values.toFixed(2));
+//     }
+//     if (cryptoInfo[0][i].symbol === cryptoTicker) {
+//       tickerCell.innerHTML = cryptoTicker.toUpperCase();
+//       priceCell.innerHTML = cryptoInfo[0][i].current_price;
+//       amountCell.innerHTML = document.querySelector(".amount").value;
+//       exchangeCell.innerHTML = document.querySelector(".exchange").value;
 
-      const values = Number(amountCell.innerHTML) * Number(priceCell.innerHTML);
+//       const values = Number(amountCell.innerHTML) * Number(priceCell.innerHTML);
 
-      totalValues.push(values);
+//       totalValues.push(values);
 
-      totalCell.innerHTML = formatter.format(values.toFixed(2));
-      assetNames.push(document.querySelector(".ticker").value);
-      assetAmounts.push(values);
-      portfolioValues.push(
-        totalValues.reduce(function (a, b) {
-          return a + b;
-        }, 0)
-      );
+//       totalCell.innerHTML = formatter.format(values.toFixed(2));
+//       assetNames.push(document.querySelector(".ticker").value);
+//       assetAmounts.push(values);
+//       portfolioValues.push(
+//         totalValues.reduce(function (a, b) {
+//           return a + b;
+//         }, 0)
+//       );
 
-      console.log(portfolioValues);
-      // const percent = (Number(amountCell.innerHTML) * Number(priceCell.innerHTML)) / portfolioValue;
-      // cell6.innerHTML = percent.toFixed(2);
-      const portfolioValue = portfolioValues.pop();
-      currentValue.innerHTML = ` // ${formatter.format(portfolioValue)}`;
-    }
-  }
-};
+//       console.log(portfolioValues);
+//       // const percent = (Number(amountCell.innerHTML) * Number(priceCell.innerHTML)) / portfolioValue;
+//       // cell6.innerHTML = percent.toFixed(2);
+//       const portfolioValue = portfolioValues.pop();
+//       currentValue.innerHTML = ` // ${formatter.format(portfolioValue)}`;
+//     }
+//   }
+// };
 
 let portfolioValues = [];
 let totalValues = [];
 let assetNames = [];
 let assetAmounts = [];
 
-console.log(portfolioValues);
 function updateChart() {
   myChart.data.datasets[0].data = [];
   myChart.data.labels = [];
@@ -224,13 +185,37 @@ function addToPriceSlider() {
   }
 }
 
-let ws = new WebSocket("wss://stream.binance.com:9443/ws/adausdt@trade");
-ws.onmessage = (event) => {
-  let stockObject = JSON.parse(event.data);
-  let btcPrice = stockObject.p;
+function addCryptoToWallet() {
+  const table = document.querySelector(".wallet");
+  const row = table.insertRow();
+  const tickerCell = row.insertCell();
+  const amountCell = row.insertCell();
+  const exchangeCell = row.insertCell();
+  const priceCell = row.insertCell();
+  const totalCell = row.insertCell();
 
-  let myValue = Number(btcPrice) * 2;
+  let cryptoTicker = document.querySelector(".ticker").value;
+  tickerCell.innerHTML = cryptoTicker;
 
-  const test = document.querySelector(".test");
-  test.innerHTML = myValue;
-};
+  let ws = new WebSocket(
+    `wss://stream.binance.com:9443/ws/${cryptoTicker}usdt@trade`
+  );
+  ws.onmessage = (event) => {
+    let stockObject = JSON.parse(event.data);
+    amountCell.innerHTML = document.querySelector(".amount").value;
+    exchangeCell.innerHTML = document.querySelector(".exchange").value;
+    priceCell.innerHTML = stockObject.p;
+    const values = Number(amountCell.innerHTML) * Number(priceCell.innerHTML);
+
+    totalValues.push(values);
+
+    totalCell.innerHTML = formatter.format(values.toFixed(2));
+    assetNames.push(document.querySelector(".ticker").value);
+    assetAmounts.push(values);
+    portfolioValues.push(
+      totalValues.reduce(function (a, b) {
+        return a + b;
+      }, 0)
+    );
+  };
+}
