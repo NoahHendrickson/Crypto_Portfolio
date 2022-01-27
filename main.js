@@ -148,7 +148,15 @@ const addCryptoToWallet = () => {
   let cryptoTicker = document.querySelector(".ticker").value;
   for (i = 0; i < cryptoInfo[0].length; i++) {
     if (cryptoTicker === "avax") {
-      return;
+      let cryptoTicker = document.querySelector(".ticker").value.toUpperCase();
+      tickerCell.innerHTML = cryptoTicker.toUpperCase();
+      priceCell.innerHTML = cryptoInfo[0][i].current_price;
+      amountCell.innerHTML = document.querySelector(".amount").value;
+      exchangeCell.innerHTML = document.querySelector(".exchange").value;
+
+      const values = Number(amountCell.innerHTML) * Number(priceCell.innerHTML);
+
+      totalCell.innerHTML = formatter.format(values.toFixed(2));
     }
     if (cryptoInfo[0][i].symbol === cryptoTicker) {
       tickerCell.innerHTML = cryptoTicker.toUpperCase();
@@ -215,3 +223,14 @@ function addToPriceSlider() {
     }
   }
 }
+
+let ws = new WebSocket("wss://stream.binance.com:9443/ws/usdt@trade");
+ws.onmessage = (event) => {
+  let stockObject = JSON.parse(event.data);
+  let btcPrice = stockObject.p;
+
+  let myValue = Number(btcPrice) * 2;
+
+  const test = document.querySelector(".test");
+  test.innerHTML = myValue;
+};
