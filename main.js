@@ -153,18 +153,18 @@ let totalValues = [];
 let assetNames = [];
 let assetAmounts = [];
 
-function updateChart() {
-  myChart.data.datasets[0].data = [];
-  myChart.data.labels = [];
-  assetNames.forEach((element) => {
-    myChart.data.labels.push(element.toUpperCase());
-  });
-  assetAmounts.forEach((e) => {
-    myChart.data.datasets[0].data.push(e);
-  });
+// function updateChart() {
+//   myChart.data.datasets[0].data = [];
+//   myChart.data.labels = [];
+//   assetNames.forEach((element) => {
+//     myChart.data.labels.push(element.toUpperCase());
+//   });
+//   assetAmounts.forEach((e) => {
+//     myChart.data.datasets[0].data.push(e);
+//   });
 
-  myChart.update();
-}
+//   myChart.update();
+// }
 
 let cryptoInfo = [];
 
@@ -194,19 +194,20 @@ function addCryptoToWallet() {
   const priceCell = row.insertCell();
   const totalCell = row.insertCell();
 
+  let values = [];
   let cryptoTicker = document.querySelector(".ticker").value;
   tickerCell.innerHTML = cryptoTicker;
+  amountCell.innerHTML = document.querySelector(".amount").value;
+  exchangeCell.innerHTML = document.querySelector(".exchange").value;
 
   let ws = new WebSocket(
     `wss://stream.binance.com:9443/ws/${cryptoTicker}usdt@trade`
   );
+
   ws.onmessage = (event) => {
     let stockObject = JSON.parse(event.data);
-    amountCell.innerHTML = document.querySelector(".amount").value;
-    exchangeCell.innerHTML = document.querySelector(".exchange").value;
     priceCell.innerHTML = stockObject.p;
-    const values = Number(amountCell.innerHTML) * Number(priceCell.innerHTML);
-
+    let values = Number(amountCell.innerHTML) * Number(priceCell.innerHTML);
     totalValues.push(values);
 
     totalCell.innerHTML = formatter.format(values.toFixed(2));
@@ -217,5 +218,12 @@ function addCryptoToWallet() {
         return a + b;
       }, 0)
     );
+    myChart.data.datasets[0].data = [];
+    myChart.data.labels = [];
   };
+  myChart.data.labels.push(cryptoTicker);
+  myChart.data.datasets[0].data.push(values);
+  const toChart = Number(ws) * Number(amountCell.innerHTML);
+  console.log(toChart);
+  myChart.update();
 }
