@@ -179,11 +179,20 @@ function addToPriceSlider() {
   let ws = new WebSocket(
     `wss://stream.binance.com:9443/ws/${cryptoTicker}usdt@trade`
   );
-
+  let lastPrice = null;
   ws.onmessage = (event) => {
     let stockObject = JSON.parse(event.data);
     let price = parseFloat(stockObject.p).toFixed(2);
-    newSpan.innerHTML = `${displayTicker} //  ${price}`;
+    newSpan.innerHTML = `${displayTicker} 🚀  ${price}`;
+
+    newSpan.style.color =
+      !lastPrice || lastPrice === price
+        ? "black"
+        : price > lastPrice
+        ? "green"
+        : "red";
+    console.log(newPrice, oldPrice, price);
+    lastPrice = price;
   };
   parentE.insertBefore(newSpan, siblingE);
 }
@@ -228,20 +237,19 @@ function addCryptoToWallet() {
 
     trs.forEach((element) => {
       const tds = element.lastChild;
-      const yolo = Number(tds.innerHTML);
-      if (NaN) {
+      const yolo = tds.innerHTML;
+      if (yolo == undefined) {
         return;
       } else {
+        myChart.data.labels.push(cryptoTicker);
+
         myChart.data.datasets[0].data.push(yolo);
+        console.log(yolo);
+        myChart.update();
       }
-
-      console.log(yolo);
     });
-
-    myChart.update();
   };
   assetNames.push(document.querySelector(".ticker").value);
-  myChart.data.labels.push(cryptoTicker);
   const trs = document.querySelectorAll("tr");
   // console.log(trs);
 }
