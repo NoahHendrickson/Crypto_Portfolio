@@ -173,16 +173,19 @@ function addToPriceSlider() {
   const siblingE = document.querySelector(".asset-slideout");
   const newSpan = document.createElement("span");
   newSpan.classList.add("assets");
-  const newText = document.querySelector(".add-asset-button").value;
-  for (i = 0; i < cryptoInfo[0].length; i++) {
-    if (cryptoInfo[0][i].symbol === newText) {
-      const assetSymbol = cryptoInfo[0][i].symbol;
-      const assetPrice = cryptoInfo[0][i].current_price;
+  const cryptoTicker = document.querySelector(".add-asset-button").value;
+  const displayTicker = cryptoTicker.toUpperCase();
+  newSpan.innerHTML = displayTicker;
+  let ws = new WebSocket(
+    `wss://stream.binance.com:9443/ws/${cryptoTicker}usdt@trade`
+  );
 
-      newSpan.innerHTML = `${assetSymbol.toUpperCase()}  ${assetPrice}`;
-      parentE.insertBefore(newSpan, siblingE);
-    }
-  }
+  ws.onmessage = (event) => {
+    let stockObject = JSON.parse(event.data);
+    let price = parseFloat(stockObject.p).toFixed(2);
+    newSpan.innerHTML = `${displayTicker} //  ${price}`;
+  };
+  parentE.insertBefore(newSpan, siblingE);
 }
 
 function addCryptoToWallet() {
@@ -206,12 +209,14 @@ function addCryptoToWallet() {
 
   ws.onmessage = (event) => {
     let stockObject = JSON.parse(event.data);
-    priceCell.innerHTML = stockObject.p;
+    priceCell.innerHTML = parseFloat(stockObject.p).toFixed(2);
+    myChart.data.datasets[0].data.push(stockObject.p);
     let values = Number(amountCell.innerHTML) * Number(priceCell.innerHTML);
+
     totalValues.push(values);
 
-    totalCell.innerHTML = formatter.format(values.toFixed(2));
-    assetNames.push(document.querySelector(".ticker").value);
+    // totalCell.innerHTML = formatter.format(values.toFixed(2));
+    totalCell.innerHTML = values.toFixed(2);
     assetAmounts.push(values);
     portfolioValues.push(
       totalValues.reduce(function (a, b) {
@@ -220,10 +225,23 @@ function addCryptoToWallet() {
     );
     myChart.data.datasets[0].data = [];
     myChart.data.labels = [];
+
+    trs.forEach((element) => {
+      const tds = element.lastChild;
+      const yolo = Number(tds.innerHTML);
+      if (NaN) {
+        return;
+      } else {
+        myChart.data.datasets[0].data.push(yolo);
+      }
+
+      console.log(yolo);
+    });
+
+    myChart.update();
   };
+  assetNames.push(document.querySelector(".ticker").value);
   myChart.data.labels.push(cryptoTicker);
-  myChart.data.datasets[0].data.push(values);
-  const toChart = Number(ws) * Number(amountCell.innerHTML);
-  console.log(toChart);
-  myChart.update();
+  const trs = document.querySelectorAll("tr");
+  // console.log(trs);
 }
