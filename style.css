@@ -7,12 +7,13 @@
 :root {
   --black: rgb(21, 22, 26);
   --dark: rgb(2, 142, 119);
-  --mid: rgb(32, 176, 184);
+  --mid: rgb(0, 202, 202);
+  /* --mid: rgb(32, 176, 184); */
   --mid-light: #07d6af;
   --light: rgb(145, 255, 156);
   --white: rgba(244, 246, 231, 1);
-  --orange: rgb(250, 124, 8);
-  --grey: rgba(132, 126, 115, 1);
+  --orange: rgb(253, 117, 73);
+  --grey: rgb(67, 123, 226);
 }
 
 header {
@@ -79,7 +80,7 @@ button {
 }
 
 .nav-button.active {
-  box-shadow: 0px 0px 10px 0px var(--light);
+  box-shadow: 0px 0px 10px 2px var(--light);
   background: var(--light);
   color: var(--black);
 }
@@ -275,9 +276,8 @@ td {
   margin: 0px 15px;
   color: var(--white);
   font-weight: 400;
-  font-size: 1.5em;
+  font-size: 1.4em;
   width: 100px;
-  text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.5);
 }
 
 .asset-slideout {

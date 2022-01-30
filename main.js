@@ -183,16 +183,8 @@ function addToPriceSlider() {
   ws.onmessage = (event) => {
     let stockObject = JSON.parse(event.data);
     let price = parseFloat(stockObject.p).toFixed(2);
-    newSpan.innerHTML = `${displayTicker} 🚀  ${price}`;
 
-    newSpan.style.color =
-      !lastPrice || lastPrice === price
-        ? "black"
-        : price > lastPrice
-        ? "green"
-        : "red";
-    console.log(newPrice, oldPrice, price);
-    lastPrice = price;
+    newSpan.innerHTML = `${displayTicker} 🚀  ${price}`;
   };
   parentE.insertBefore(newSpan, siblingE);
 }
@@ -208,7 +200,7 @@ function addCryptoToWallet() {
 
   let values = [];
   let cryptoTicker = document.querySelector(".ticker").value;
-  tickerCell.innerHTML = cryptoTicker;
+  tickerCell.innerHTML = cryptoTicker.toUpperCase();
   amountCell.innerHTML = document.querySelector(".amount").value;
   exchangeCell.innerHTML = document.querySelector(".exchange").value;
 
@@ -219,7 +211,6 @@ function addCryptoToWallet() {
   ws.onmessage = (event) => {
     let stockObject = JSON.parse(event.data);
     priceCell.innerHTML = parseFloat(stockObject.p).toFixed(2);
-    myChart.data.datasets[0].data.push(stockObject.p);
     let values = Number(amountCell.innerHTML) * Number(priceCell.innerHTML);
 
     totalValues.push(values);
@@ -234,10 +225,10 @@ function addCryptoToWallet() {
     );
     myChart.data.datasets[0].data = [];
     myChart.data.labels = [];
-
+    let yolo = [];
     trs.forEach((element) => {
       const tds = element.lastChild;
-      const yolo = tds.innerHTML;
+      yolo = tds.innerHTML;
       if (yolo == undefined) {
         return;
       } else {
