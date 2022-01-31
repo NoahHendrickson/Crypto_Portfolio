@@ -76,13 +76,17 @@ const data = {
       data: [],
       backgroundColor: [
         "rgba(2, 142, 119, .5)",
-        "rgba(32, 176, 184, .5)",
+        "rgba(0, 202, 202, .5)",
         "rgba(145, 255, 156, .5)",
+        "rgba(253, 117, 73, .5)",
+        "rgba(7, 214, 175, .5)",
       ],
       borderColor: [
         "rgba(2, 142, 119, 1)",
-        "rgba(32, 176, 184, 1)",
+        "rgba(0, 202, 202, 1)",
         "rgba(145, 255, 156, 1)",
+        "rgba(253, 117, 73, 1)",
+        "rgba(7, 214, 175, 1)",
       ],
       hoverOffset: 4,
     },
@@ -98,73 +102,9 @@ const myChart = new Chart(ctx, {
 
 const currentValue = document.querySelector(".current-value");
 
-// const addCryptoToWallet = () => {
-//   const table = document.querySelector(".wallet");
-//   const row = table.insertRow();
-//   const tickerCell = row.insertCell();
-//   const amountCell = row.insertCell();
-//   const exchangeCell = row.insertCell();
-//   const priceCell = row.insertCell();
-//   const totalCell = row.insertCell();
-
-//   let cryptoTicker = document.querySelector(".ticker").value;
-//   for (i = 0; i < cryptoInfo[0].length; i++) {
-//     if (cryptoTicker === "avax") {
-//       let cryptoTicker = document.querySelector(".ticker").value.toUpperCase();
-//       tickerCell.innerHTML = cryptoTicker.toUpperCase();
-//       priceCell.innerHTML = cryptoInfo[0][i].current_price;
-//       amountCell.innerHTML = document.querySelector(".amount").value;
-//       exchangeCell.innerHTML = document.querySelector(".exchange").value;
-
-//       const values = Number(amountCell.innerHTML) * Number(priceCell.innerHTML);
-
-//       totalCell.innerHTML = formatter.format(values.toFixed(2));
-//     }
-//     if (cryptoInfo[0][i].symbol === cryptoTicker) {
-//       tickerCell.innerHTML = cryptoTicker.toUpperCase();
-//       priceCell.innerHTML = cryptoInfo[0][i].current_price;
-//       amountCell.innerHTML = document.querySelector(".amount").value;
-//       exchangeCell.innerHTML = document.querySelector(".exchange").value;
-
-//       const values = Number(amountCell.innerHTML) * Number(priceCell.innerHTML);
-
-//       totalValues.push(values);
-
-//       totalCell.innerHTML = formatter.format(values.toFixed(2));
-//       assetNames.push(document.querySelector(".ticker").value);
-//       assetAmounts.push(values);
-//       portfolioValues.push(
-//         totalValues.reduce(function (a, b) {
-//           return a + b;
-//         }, 0)
-//       );
-
-//       console.log(portfolioValues);
-//       // const percent = (Number(amountCell.innerHTML) * Number(priceCell.innerHTML)) / portfolioValue;
-//       // cell6.innerHTML = percent.toFixed(2);
-//       const portfolioValue = portfolioValues.pop();
-//       currentValue.innerHTML = ` // ${formatter.format(portfolioValue)}`;
-//     }
-//   }
-// };
-
 let portfolioValues = [];
 let totalValues = [];
-let assetNames = [];
 let assetAmounts = [];
-
-// function updateChart() {
-//   myChart.data.datasets[0].data = [];
-//   myChart.data.labels = [];
-//   assetNames.forEach((element) => {
-//     myChart.data.labels.push(element.toUpperCase());
-//   });
-//   assetAmounts.forEach((e) => {
-//     myChart.data.datasets[0].data.push(e);
-//   });
-
-//   myChart.update();
-// }
 
 let cryptoInfo = [];
 
@@ -188,6 +128,8 @@ function addToPriceSlider() {
   };
   parentE.insertBefore(newSpan, siblingE);
 }
+let assetNames = [];
+myChart.data.labels = assetNames;
 
 function addCryptoToWallet() {
   const table = document.querySelector(".wallet");
@@ -199,10 +141,12 @@ function addCryptoToWallet() {
   const totalCell = row.insertCell();
 
   let values = [];
+
   let cryptoTicker = document.querySelector(".ticker").value;
   tickerCell.innerHTML = cryptoTicker.toUpperCase();
   amountCell.innerHTML = document.querySelector(".amount").value;
   exchangeCell.innerHTML = document.querySelector(".exchange").value;
+  assetNames.push(cryptoTicker);
 
   let ws = new WebSocket(
     `wss://stream.binance.com:9443/ws/${cryptoTicker}usdt@trade`
@@ -224,23 +168,23 @@ function addCryptoToWallet() {
       }, 0)
     );
     myChart.data.datasets[0].data = [];
-    myChart.data.labels = [];
+
+    const trs = document.querySelectorAll("tr");
     let yolo = [];
     trs.forEach((element) => {
       const tds = element.lastChild;
       yolo = tds.innerHTML;
-      if (yolo == undefined) {
+      if (yolo === undefined) {
         return;
       } else {
-        myChart.data.labels.push(cryptoTicker);
-
         myChart.data.datasets[0].data.push(yolo);
-        console.log(yolo);
-        myChart.update();
       }
     });
+    if (assetNames.length === myChart.data.datasets[0].data.length)
+      myChart.update();
+    const portValue = myChart.data.datasets[0].data.reduce(function (a, b) {
+      return Number(a) + Number(b);
+    }, 0);
+    currentValue.innerHTML = portValue.toFixed(2);
   };
-  assetNames.push(document.querySelector(".ticker").value);
-  const trs = document.querySelectorAll("tr");
-  // console.log(trs);
 }
